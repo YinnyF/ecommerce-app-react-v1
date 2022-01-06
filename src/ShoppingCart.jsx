@@ -22,10 +22,7 @@ export default class ShoppingCart extends Component {
             return (
               <Product
                 key={product.id}
-                id={product.id}
-                productName={product.productName}
-                price={product.price}
-                quantity={product.quantity}
+                product={product}
               />
             );
           })}
