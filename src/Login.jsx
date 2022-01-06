@@ -4,7 +4,7 @@ export default class Login extends Component {
   // initialise the state in the constructor
   constructor(props) {
     super(props);
-    this.state = { email: "test@test.com", password: "123" };
+    this.state = { email: "", password: "", message: "" };
   }
 
   render() {
@@ -40,8 +40,11 @@ export default class Login extends Component {
         </div>
         {/* Password ends */}
 
-        <div>
-          <button className="btn btn-primary" onClick={this.onLoginClick}>Login</button>
+        <div className="text-right">
+          {this.state.message}
+          <button className="btn btn-primary m-1" onClick={this.onLoginClick}>
+            Login
+          </button>
         </div>
       </div>
     );
@@ -49,6 +52,16 @@ export default class Login extends Component {
 
   // executes when the user clicks on login
   onLoginClick = () => {
-    console.log(this.state);
-  }
+    if (this.state.email === "test@test.com" && this.state.password === "123") {
+      // success
+      this.setState({
+        message: <span className="text-success">"Successfully logged in"</span>,
+      });
+    } else {
+      // error
+      this.setState({
+        message: <span className="text-danger">"Invalid login"</span>,
+      });
+    }
+  };
 }
