@@ -25,6 +25,7 @@ export default class ShoppingCart extends Component {
                 product={product}
                 onIncrement={this.handleIncrement}
                 onDecrement={this.handleDecrement}
+                onDelete={this.handleDelete}
               >
                 <button className="btn btn-primary">Buy Now</button>
               </Product>
@@ -62,6 +63,21 @@ export default class ShoppingCart extends Component {
       allProducts[index].quantity--;
 
       // overwrite the changes in the state using setState method
+      this.setState({ products: allProducts });
+    }
+  };
+
+  // executes when the user clicks on Delete (x) button in the Product component.
+  handleDelete = (product) => {
+    // clone products array, get index of the selected product
+    var allProducts = [...this.state.products];
+    var index = allProducts.indexOf(product);
+
+    if (window.confirm("Are you sure you want to delete?")) {
+      // delete product based on index (1 element will be removed from the allProducts array)
+      allProducts.splice(index, 1);
+
+      // update the state of the current component (parent component)
       this.setState({ products: allProducts });
     }
   };

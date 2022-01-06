@@ -1,3 +1,7 @@
 .navbar-style {
   background-color: #7371FC!important; 
 }
+
+.hand-icon {
+  cursor: pointer;
+}
