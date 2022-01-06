@@ -84,12 +84,29 @@ export default class MainContent extends Component {
     }
   };
 
+  // executes when the user clicks on "Change Photo" button in the grid
+  // receives the "customer" object and index of the currently clicked customer
+
+  onChangePhotoClick = (customer, index) => {
+    // get existing customers
+    var custArr = this.state.customers;
+    custArr[index].photo = "https://randomuser.me/api/portraits/men/80.jpg";
+
+    // update "customers" array in the state
+    this.setState({customers: custArr})
+  }
+
   getCustomerRow = () => {
-    return this.state.customers.map((customer) => {
+    return this.state.customers.map((customer, index) => {
       return (
         <tr key={customer.id}>
           <td>{customer.id}</td>
-          <td><img src={customer.photo} alt="Customer"/></td>
+          <td>
+            <img src={customer.photo} alt="Customer"/>
+            <div>
+              <button className="btn btn-sm btn-secondary" onClick={() => {this.onChangePhotoClick(customer, index);}}>Change Photo</button>
+            </div>
+          </td>
           <td>{customer.name}</td>
           <td>{this.getPhoneToRender(customer.phone)}</td>
         </tr>
