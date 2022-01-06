@@ -10,6 +10,6 @@ import "bootstrap/dist/css/bootstrap.css";
 // import css file
 import "./index.css";
 
-import NavBar from "./App";
+import App from "./App";
 
-ReactDOM.render(<NavBar />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
