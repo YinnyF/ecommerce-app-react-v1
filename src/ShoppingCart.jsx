@@ -20,10 +20,9 @@ export default class ShoppingCart extends Component {
         <div className="row">
           {this.state.products.map((product) => {
             return (
-              <Product
-                key={product.id}
-                product={product}
-              />
+              <Product key={product.id} product={product}>
+                <button className="btn btn-primary">Buy Now</button>
+              </Product>
             );
           })}
         </div>
