@@ -37,28 +37,32 @@ export default class ShoppingCart extends Component {
   // render ends here
 
   // executes when the user clicks on + button
-  handleIncrement = (product) => {
+  handleIncrement = (product, maxValue) => {
     // clone products array, get index of the selected product
     var allProducts = [...this.state.products];
     var index = allProducts.indexOf(product);
 
     // update the value directly
-    allProducts[index].quantity++;
+    if (allProducts[index].quantity < maxValue) {
+      allProducts[index].quantity++;
 
-    // overwrite the changes in the state using setState method
-    this.setState({ products: allProducts });
+      // overwrite the changes in the state using setState method
+      this.setState({ products: allProducts });
+    }
   };
 
   // executes when the user clicks on - button
-  handleDecrement = (product) => {
+  handleDecrement = (product, minValue) => {
     // clone products array, get index of the selected product
     var allProducts = [...this.state.products];
     var index = allProducts.indexOf(product);
 
-    // update the value directly
-    allProducts[index].quantity--;
+    if (allProducts[index].quantity > minValue) {
+      // update the value directly
+      allProducts[index].quantity--;
 
-    // overwrite the changes in the state using setState method
-    this.setState({ products: allProducts });
+      // overwrite the changes in the state using setState method
+      this.setState({ products: allProducts });
+    }
   };
 }

@@ -30,7 +30,7 @@ export default class Product extends Component {
                 <button
                   className="btn btn-outline-success"
                   onClick={() => {
-                    this.props.onIncrement(this.state.product);
+                    this.props.onIncrement(this.state.product, 10);
                   }}
                 >
                   +
@@ -38,7 +38,7 @@ export default class Product extends Component {
                 <button
                   className="btn btn-outline-success"
                   onClick={() => {
-                    this.props.onDecrement(this.state.product);
+                    this.props.onDecrement(this.state.product, 0);
                   }}
                 >
                   -
