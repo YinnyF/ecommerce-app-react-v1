@@ -5,11 +5,36 @@ export default class MainContent extends Component {
     pageTitle: "Customers",
     customersCount: 5,
     customers: [
-      { id: 1, name: "Scott", phone: "123-456" },
-      { id: 2, name: "Jones", phone: "123-456" },
-      { id: 3, name: "Allen", phone: "123-456" },
-      { id: 4, name: "James", phone: null },
-      { id: 5, name: "John", phone: null },
+      { 
+        id: 1,
+        name: "Scott",
+        phone: "123-456",
+        photo: "https://randomuser.me/api/portraits/men/75.jpg" 
+      },
+      { 
+        id: 2,
+        name: "Jones",
+        phone: "123-456",
+        photo: "https://randomuser.me/api/portraits/men/76.jpg" 
+      },
+      { 
+        id: 3,
+        name: "Allen",
+        phone: "123-456",
+        photo: "https://randomuser.me/api/portraits/men/77.jpg" 
+      },
+      { 
+        id: 4,
+        name: "James",
+        phone: null,
+        photo: "https://randomuser.me/api/portraits/men/78.jpg" 
+      },
+      { 
+        id: 5,
+        name: "John",
+        phone: null,
+        photo: "https://randomuser.me/api/portraits/men/79.jpg" 
+      },
     ],
   };
 
@@ -32,6 +57,7 @@ export default class MainContent extends Component {
           <thead>
             <tr>
               <th>ID #</th>
+              <th>Photo</th>
               <th>Customer Name</th>
               <th>Phone</th>
             </tr>
@@ -63,6 +89,7 @@ export default class MainContent extends Component {
       return (
         <tr key={customer.id}>
           <td>{customer.id}</td>
+          <td><img src={customer.photo} alt="Customer"/></td>
           <td>{customer.name}</td>
           <td>{this.getPhoneToRender(customer.phone)}</td>
         </tr>
