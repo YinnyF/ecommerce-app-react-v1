@@ -4,10 +4,10 @@ import Product from "./Product";
 export default class ShoppingCart extends Component {
   state = {
     products: [
-      { id: 1, productName: "A", price: 1, quantity: 0 },
-      { id: 2, productName: "B", price: 2, quantity: 0 },
-      { id: 3, productName: "C", price: 3, quantity: 0 },
-      { id: 4, productName: "D", price: 4, quantity: 0 },
+      { id: 1, productName: "A", price: 1, quantity: 2 },
+      { id: 2, productName: "B", price: 2, quantity: 3 },
+      { id: 3, productName: "C", price: 3, quantity: 4 },
+      { id: 4, productName: "D", price: 4, quantity: 5 },
       { id: 5, productName: "E", price: 5, quantity: 0 },
     ],
   };
@@ -20,7 +20,12 @@ export default class ShoppingCart extends Component {
         <div className="row">
           {this.state.products.map((product) => {
             return (
-              <Product key={product.id} product={product}>
+              <Product
+                key={product.id}
+                product={product}
+                onIncrement={this.handleIncrement}
+                onDecrement={this.handleDecrement}
+              >
                 <button className="btn btn-primary">Buy Now</button>
               </Product>
             );
@@ -29,4 +34,31 @@ export default class ShoppingCart extends Component {
       </div>
     );
   }
+  // render ends here
+
+  // executes when the user clicks on + button
+  handleIncrement = (product) => {
+    // clone products array, get index of the selected product
+    var allProducts = [...this.state.products];
+    var index = allProducts.indexOf(product);
+
+    // update the value directly
+    allProducts[index].quantity++;
+
+    // overwrite the changes in the state using setState method
+    this.setState({ products: allProducts });
+  };
+
+  // executes when the user clicks on - button
+  handleDecrement = (product) => {
+    // clone products array, get index of the selected product
+    var allProducts = [...this.state.products];
+    var index = allProducts.indexOf(product);
+
+    // update the value directly
+    allProducts[index].quantity--;
+
+    // overwrite the changes in the state using setState method
+    this.setState({ products: allProducts });
+  };
 }
