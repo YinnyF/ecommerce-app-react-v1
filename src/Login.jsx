@@ -49,10 +49,18 @@ export default class Login extends Component {
       </div>
     );
   }
+  // end of render
 
   // executes when the user clicks on login
-  onLoginClick = () => {
-    if (this.state.email === "test@test.com" && this.state.password === "123") {
+  onLoginClick = async () => {
+    var response = await fetch(
+      `http://localhost:5000/users?email=${this.state.email}&password=${this.state.password}`,
+      { method: "GET" }
+    );
+
+    var body = await response.json();
+
+    if (body.length !== 0) {
       // success
       this.setState({
         message: <span className="text-success">"Successfully logged in"</span>,

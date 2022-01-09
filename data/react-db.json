@@ -5,5 +5,9 @@
     { "id": 3, "productName": "C", "price": 3, "quantity": 4 },
     { "id": 4, "productName": "D", "price": 4, "quantity": 5 },
     { "id": 5, "productName": "E", "price": 5, "quantity": 0 }
+  ],
+  "users":[
+    { "id": 1, "email": "test@test.com", "password": "123456"},
+    { "id": 2, "email": "cynthia@test.com", "password": "cynthia123"}
   ]
 }

@@ -38,7 +38,7 @@ export default class ShoppingCart extends Component {
       method: "GET",
     });
     var prods = await response.json();
-    console.log(prods);
+    // console.log(prods);
 
     this.setState({ products: prods });
     // promise.then((response) => {
