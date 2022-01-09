@@ -3,13 +3,7 @@ import Product from "./Product";
 
 export default class ShoppingCart extends Component {
   state = {
-    products: [
-      { id: 1, productName: "A", price: 1, quantity: 2 },
-      { id: 2, productName: "B", price: 2, quantity: 3 },
-      { id: 3, productName: "C", price: 3, quantity: 4 },
-      { id: 4, productName: "D", price: 4, quantity: 5 },
-      { id: 5, productName: "E", price: 5, quantity: 0 },
-    ],
+    products: [],
   };
 
   render() {
@@ -37,6 +31,25 @@ export default class ShoppingCart extends Component {
   }
   // render ends here
 
+  // executes after constructor and render method (includes life cycle of child components if any) of current component
+  componentDidMount = async () => {
+    // fetch data from data source
+    var response = await fetch("http://localhost:5000/products", {
+      method: "GET",
+    });
+    var prods = await response.json();
+    console.log(prods);
+
+    this.setState({ products: prods });
+    // promise.then((response) => {
+    //   var promise2 = response.json();
+    //   promise2.then((products) => {
+    //     console.log(products);
+
+    //     this.setState({ products: products });
+    //   });
+    // });
+  };
   // executes when the user clicks on + button
   handleIncrement = (product, maxValue) => {
     // clone products array, get index of the selected product
